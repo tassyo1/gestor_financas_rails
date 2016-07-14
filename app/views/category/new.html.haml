@@ -1,7 +1,8 @@
 = form_for @category, url:category_create_path do |f|
   -if  @category.errors.any?
-    %ul - @category.full_messages.each do |msg|
-    %li = msg
+    %ul.errors
+      - @category.errors.full_messages.each do |msg|
+        %li= msg
 
   =f.label :type_category, "Tipo"
   =f.radio_button :type_category, 'D'
