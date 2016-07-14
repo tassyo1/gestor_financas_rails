@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714170554) do
+ActiveRecord::Schema.define(version: 20160714181037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.float    "value"
+    t.date     "date_scheduled"
+    t.string   "type",           limit: 1
+    t.integer  "frequency_id",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "categories", ["frequency_id"], name: "index_categories_on_frequency_id", using: :btree
 
   create_table "frequencies", force: :cascade do |t|
     t.string   "name",       limit: 80
@@ -22,4 +34,5 @@ ActiveRecord::Schema.define(version: 20160714170554) do
     t.datetime "updated_at",            null: false
   end
 
+  add_foreign_key "categories", "frequencies"
 end
