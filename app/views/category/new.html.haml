@@ -1,22 +1,24 @@
 = form_for @category, url:category_create_path do |f|
-    =f.label :type, "Tipo"
-    =f.radio_button :type, 'D'
-    =f.label :type_d, 'Despesa'
-    =f.radio_button :type, 'R'
-    =f.label :type_r,'Receita'
-    %br 
-    =f.label :name, "Nome"
-    =f.text_field :name
-    %br
-    =f.label :frequency, "Frequência"
-    =f.collection_select  :frequency_id, Frequency.all, :id, :name,{ prompt: "Selecione"} 
-    %br
-    =f.label :date_scheduled, "Data"
-    =f.text_field :date_scheduled
-    %br
-    =f.label :value, "Valor"
-    =f.text_field :value
-    %br
-    
+  -if  @category.errors.any?
+    %ul - @category.full_messages.each do |msg|
+    %li = msg
 
-    =f.submit "Salvar"
+  =f.label :type, "Tipo"
+  =f.radio_button :type, 'D'
+  =f.label :type_d, 'Despesa'
+  =f.radio_button :type, 'R'
+  =f.label :type_r,'Receita'
+  %br 
+  =f.label :name, "Nome"
+  =f.text_field :name
+  %br
+  =f.label :frequency, "Frequência"
+  =f.collection_select  :frequency_id, Frequency.all, :id, :name,{ prompt: "Selecione"} 
+  %br
+  =f.label :date_scheduled, "Data"
+  =f.text_field :date_scheduled
+  %br
+  =f.label :value, "Valor"
+  =f.text_field :value
+  %br    
+  =f.submit "Salvar"
