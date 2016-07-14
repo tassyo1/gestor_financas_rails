@@ -13,7 +13,7 @@ class CategoryController < ApplicationController
   end
   def create
     @category = Category.new(category_params)
-
+    
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Categoria criada com sucesso'
@@ -26,6 +26,6 @@ class CategoryController < ApplicationController
     end
   end
   def category_params
-    params.require(:category).permit(:name,:type,:frequency_id,:date_scheduled,:value)
+    params.require(:category).permit(:name,:type_category,:frequency_id,:date_scheduled,:value)
   end
 end
