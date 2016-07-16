@@ -5,4 +5,8 @@ pt-BR:
       category: 
         name: 'Nome'
         type_category: "Tipo"
+        frequency_id: "Frequência"
+        date_scheduled: "Data"
+        value: "Valor"
+
 

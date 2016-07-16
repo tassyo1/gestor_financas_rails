@@ -1,9 +1,9 @@
-= form_for @category, url:category_create_path do |f|
-  -if  @category.errors.any?
-    %ul.errors
-      - @category.errors.full_messages.each do |msg|
-        %li= msg
-
+-if  @category.errors.any?
+  %ul.errors
+    - @category.errors.full_messages.each do |msg|
+      %li= msg
+      
+= form_for @category, url:category_create_path do |f| 
   =f.label :type_category, "Tipo"
   =f.radio_button :type_category, 'D'
   =f.label :type_category_d, 'Despesa'
@@ -13,7 +13,7 @@
   =f.label :name, "Nome"
   =f.text_field :name
   %br
-  =f.label :frequency, "Frequência"
+  =f.label :frequency_id, "Frequência"
   =f.collection_select  :frequency_id, Frequency.all, :id, :name,{ prompt: "Selecione"} 
   %br
   =f.label :date_scheduled, "Data"
