@@ -9,7 +9,14 @@ Saldo Atual: <%= @movements.first.balance %>
   </thead>
   <tbody>
       <% @movements.each do |m| %>
-        
+        <tr>
+          <td><%= m.category.name %><br><%= m.date_launched %></td>
+          <% if m.category.type_category == "D" %>
+            <td>-<%= m.balance %></td>
+          <% else %>
+            <td>+<%= m.balance %></td>
+          <% end %>
+        </tr>
       <% end %>
   </tbody>
 </table>
