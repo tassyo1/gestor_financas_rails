@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'sprockets', '3.6.3'
+gem 'bootstrap-datepicker-rails'
 
 gem 'rails-i18n', '~> 4.0.0' # for Rails 4
 
