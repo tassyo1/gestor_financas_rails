@@ -12,8 +12,7 @@ class CategoryController < ApplicationController
       format.xml  { render xml: @category }
     end
   end
-  def create
-    binding.pry
+  def create 
     @category = Category.new(category_params)
 
     respond_to do |format|
