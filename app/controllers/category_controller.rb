@@ -1,4 +1,5 @@
 class CategoryController < ApplicationController
+  include CategoryHelper 
   def index
     @categories = Category.all.order(:name)
   end
@@ -12,8 +13,9 @@ class CategoryController < ApplicationController
     end
   end
   def create
+    binding.pry
     @category = Category.new(category_params)
-    
+
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Categoria criada com sucesso'
@@ -26,6 +28,8 @@ class CategoryController < ApplicationController
     end
   end
   def category_params
-    params.require(:category).permit(:name,:type_category,:frequency_id,:date_scheduled,:value)
+   par = params.require(:category).permit(:name,:type_category,:frequency_id,:date_scheduled,:value) 
+   par[:date_scheduled] = format_data(par[:date_scheduled])
+   par
   end
 end
