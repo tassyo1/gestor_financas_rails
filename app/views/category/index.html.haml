@@ -1,5 +1,5 @@
 %h1 Categorias
-%table 
+%table.table
   %thead
     %th Nome
     %th Valor
@@ -11,7 +11,7 @@
       %tr 
         %td= c.name
         %td= c.value
-        %td= c.date_scheduled
+        %td= format_data(c.date_scheduled.to_s,false)
         -if c.type_category == "D"
           %td= "Despesa"
         -else

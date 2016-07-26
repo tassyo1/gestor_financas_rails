@@ -17,12 +17,15 @@ RSpec.describe CategoryHelper, type: :helper do
         I18n.locale =:"pt-BR"
       end
       
-      it 'parâmetro não nulo' do
-        expect(format_data("25/02/2016")).to eq("2016-02-25") 
+      it 'data não nula e inserindo = true' do
+        expect(format_data("25/02/2016",true)).to eq("2016-02-25") 
+      end
+      it 'data não nula e insert = false' do
+        expect(format_data("2016-02-25",false)).to eq("25/02/2016")
       end
 
       it 'parâmetro nulo' do
-        expect(format_data(nil)).to eq(nil)
+        expect(format_data(nil,nil)).to eq(nil)
       end
     end
 
@@ -31,12 +34,16 @@ RSpec.describe CategoryHelper, type: :helper do
         I18n.locale = :en
       end
 
-      it 'parâmetro não nulo' do
-        expect(format_data("02/25/2016")).to eq("2016-02-25") 
+      it 'data não nula e insert = true' do
+        expect(format_data("02/25/2016",true)).to eq("2016-02-25") 
+      end
+
+      it 'data não nula e insert = false' do
+        expect(format_data("2016-02-25",false)).to eq("02/25/2016") 
       end
 
       it 'parâmetro nulo' do
-        expect(format_data(nil)).to eq(nil)
+        expect(format_data(nil,nil)).to eq(nil)
       end
     end
   end

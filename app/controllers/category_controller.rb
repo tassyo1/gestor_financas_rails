@@ -28,7 +28,7 @@ class CategoryController < ApplicationController
   end
   def category_params
    par = params.require(:category).permit(:name,:type_category,:frequency_id,:date_scheduled,:value) 
-   par[:date_scheduled] = format_data(par[:date_scheduled])
+   par[:date_scheduled] = format_data(par[:date_scheduled],true)
    par
   end
 end
