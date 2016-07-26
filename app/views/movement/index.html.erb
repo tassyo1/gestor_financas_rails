@@ -1,6 +1,8 @@
-Saldo Atual: <%= @movements.first.balance %>
+Saldo Atual: <% if !@movements.empty? %>
+                <%= @movements.first.balance %> 
+             <% end %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Categoria</th> 

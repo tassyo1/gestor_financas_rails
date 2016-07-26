@@ -4,4 +4,10 @@ FactoryGirl.define do
     date_launched "2016-07-24"
     category { create(:category) }
   end
+
+  factory :movement_nil do 
+    balance nil
+    date_launched nil
+    category nil
+  end
 end
