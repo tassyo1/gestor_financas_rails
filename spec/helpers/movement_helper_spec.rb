@@ -11,5 +11,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe MovementHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#format_data_db" do
+    context 'locale = pt-BR' do
+      
+    end
+  end
 end

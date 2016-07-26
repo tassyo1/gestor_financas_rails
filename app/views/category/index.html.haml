@@ -7,11 +7,16 @@
     %th Tipo
     %th Frequência
   %tbody
-    %tr 
-      %td 1
-      %td 2
-      %td 3
-      %td 4
-      %td 5
+    -@categories.each do |c|
+      %tr 
+        %td= c.name
+        %td= c.value
+        %td= c.date_scheduled
+        -if c.type_category == "D"
+          %td= "Despesa"
+        -else
+          %td= "Receita"
+
+        %td= c.frequency.name
 
 
