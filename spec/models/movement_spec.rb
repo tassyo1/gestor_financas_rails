@@ -15,24 +15,26 @@ RSpec.describe Movement, type: :model do
   end
 
   describe "#updates_balance" do
-    context 'último movimento é nulo' do
-      let(:mov_nil) { create(:movement_nil) }
-      let(:mov) { create(:movement) }
-      it 'deve retornar nil' do
-      
+    context 'último movimento tem balance nulo' do
+      let(:mov_nil) { build(:movement_nil) }
+      it 'deve utilizar zero para o cálculo ' do
+        mov_nil.update_balances()
+        expect(mov_nil.balance).to eq(-1.5)
       end
     end
 
     context 'último movimento não nulo' do
-      let(:mov) { create(:movement) }
+      let(:mov_r) { create(:movement_receita) }
+      let(:mov_d) { create(:movement_despesa) }
+
       it 'aumenta o saldo do movimento(receita)' do
-        mov.update_balances()
-        expect(mov.balance).to eq(3.0)
+        mov_r.update_balances()
+        expect(mov_r.balance).to eq(3.0)
       end
       
       it 'diminui o saldo do movimento(despesa)' do
-        mov.update_balances()
-        expect(mov.balance).to eq(0.0)
+        mov_d.update_balances()
+        expect(mov_d.balance).to eq(0.0)
       end
     end
   end
