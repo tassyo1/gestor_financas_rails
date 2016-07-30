@@ -22,4 +22,12 @@ FactoryGirl.define do
     type_category "R"
     frequency { create(:frequency) }
   end
+
+  factory :category_today, class: Category do 
+    name "Hoje"
+    value 1.5
+    date_scheduled Date.parse(Time.now.to_s).to_s
+    type_category "D"
+    frequency { create(:frequency_eventual) }
+  end
 end

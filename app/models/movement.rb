@@ -15,4 +15,17 @@ class Movement < ActiveRecord::Base
     end
   end
 
+  def self.movement_schedule
+    eventuais = Category.joins("LEFT JOIN movements ON categories.id = movements.category_id")
+      .where("date_scheduled <= ? AND frequency_id = 1 AND movements.category_id is NULL",Date.parse(Time.now.to_s).to_s)
+
+    eventuais.each do |e|
+      movement = Movement.new
+      movement.category = e
+      movement.date_launched = e.date_scheduled
+      movement.update_balances()
+      movement.save
+    end
+  end
+
 end

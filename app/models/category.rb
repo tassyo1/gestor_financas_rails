@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   belongs_to :frequency
+  has_many :movements
 
   validates :name, presence: true, uniqueness: true 
   validates :type_category, presence:true

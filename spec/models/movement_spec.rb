@@ -40,6 +40,19 @@ RSpec.describe Movement, type: :model do
   end
   
   describe "#movement_schedule" do
-    
+    context 'movimentos eventuais' do
+      let(:cat_today) { create(:category_today) }
+      it 'deve inserir movimentos com data inferior a hoje' do
+        a = cat_today
+      end
+
+      it 'deve inserir movimentos com data igual a hoje' do
+        
+      end
+    end
+
+    context 'movimentos frequentes' do
+      
+    end
   end
 end
