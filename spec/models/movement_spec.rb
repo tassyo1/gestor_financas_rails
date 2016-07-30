@@ -39,15 +39,23 @@ RSpec.describe Movement, type: :model do
     end
   end
   
-  describe "#movement_schedule" do
+  describe ".movement_schedule" do
     context 'movimentos eventuais' do
-      let(:cat_today) { create(:category_today) }
+      let(:cat_today) { build(:category_today) }
+      let(:category) { build(:category) }
+
       it 'deve inserir movimentos com data inferior a hoje' do
-        a = cat_today
+        category.save
+        Movement.movement_schedule
+        expect(Movement.find_by(category_id: category.id)).not_to be_nil
       end
 
       it 'deve inserir movimentos com data igual a hoje' do
+        cat_today.save
+        Movement.movement_schedule
         
+        expect(Movement.find_by(category_id: cat_today.id)).not_to be_nil
+
       end
     end
 
