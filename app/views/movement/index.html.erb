@@ -1,3 +1,5 @@
+<%= button_to("Nova finança",category_new_path,{class: 'btn btn-success', method: :get}) %>
+<br>
 Saldo Atual: <% if !@movements.empty? %>
                 <%= @movements.first.balance %> 
              <% end %>
@@ -13,10 +15,10 @@ Saldo Atual: <% if !@movements.empty? %>
       <% @movements.each do |m| %>
         <tr>
           <td><%= m.category.name %><br><%= m.date_launched %></td>
-          <% if m.category.type_category == "D" %>
-            <td>-<%= m.balance %></td>
-          <% else %>
+          <% if m.category.type_category == "R" %>
             <td>+<%= m.balance %></td>
+          <% else %>
+            <td><%= m.balance %></td>
           <% end %>
         </tr>
       <% end %>

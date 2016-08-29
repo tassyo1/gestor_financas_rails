@@ -3,23 +3,29 @@
     - @category.errors.full_messages.each do |msg|
       %li= msg
       
-= form_for @category, url:category_create_path do |f| 
-  =f.label :name, "Nome"
-  =f.text_field :name
-  %br
-  =f.label :type_category, "Tipo"
-  =f.radio_button :type_category, 'D'
-  =f.label :type_category_d, 'Despesa'
-  =f.radio_button :type_category, 'R'
-  =f.label :type_category_r,'Receita'
-  %br 
-  =f.label :frequency_id, "Frequência"
-  =f.collection_select  :frequency_id, Frequency.all, :id, :name,{ prompt: "Selecione"} 
-  %br
-  =f.label :date_scheduled, "Data"
-  =f.text_field :date_scheduled
-  %br
-  =f.label :value, "Valor"
-  =f.text_field :value
-  %br    
-  =f.submit "Salvar", class: "btn btn-primary"
+= form_for @category, url:category_create_path, html: {class:"form-horizontal"} do |f| 
+  %div.form-group
+    =f.label :name, "Nome",class: "control-label col-md-1"
+    %div.col-md-5
+      =f.text_field :name, class: "form-control"
+  %div.form-group
+    =f.label :type_category, "Tipo",class: "control-label col-md-1"
+    %div.col-md-4
+      =f.radio_button :type_category, 'D'
+      =f.label :type_category_d, 'Despesa'
+      =f.radio_button :type_category, 'R'
+      =f.label :type_category_r,'Receita'
+  %div.form-group
+    =f.label :frequency_id, "Frequência",class: "control-label col-md-1"
+    %div.col-md-2
+      =f.collection_select  :frequency_id, Frequency.all, :id, :name,{ prompt: "Selecione"} 
+  %div.form-group
+    =f.label :date_scheduled, "Data",class: "control-label col-md-1"
+    %div.col-md-2
+      =f.text_field :date_scheduled, class: "form-control"
+  %div.form-group
+    =f.label :value, "Valor",class: "control-label col-md-1"
+    %div.col-md-2
+      =f.text_field :value, class: "form-control"
+
+    =f.submit "Salvar", class: "btn btn-success"
