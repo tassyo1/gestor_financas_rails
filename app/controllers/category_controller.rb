@@ -14,13 +14,14 @@ class CategoryController < ApplicationController
   end
   def create 
     @category = Category.new(category_params)
-
+    
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Categoria criada com sucesso'
         format.html { redirect_to(@category) }
         format.xml  { render xml: @category, status: :created, location: @category }
       else
+        flash[:danger] = "Erro"
         format.html { render action: 'new' }
         format.xml  { render xml: @category.errors, status: :unprocessable_entity }
       end

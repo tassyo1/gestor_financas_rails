@@ -14,11 +14,11 @@ Saldo Atual: <% if !@movements.empty? %>
   <tbody>
       <% @movements.each do |m| %>
         <tr>
-          <td><%= m.category.name %><br><%= m.date_launched %></td>
+          <td><%= m.category.name %><br><%= format_data(m.date_launched.to_s,false) %></td>
           <% if m.category.type_category == "R" %>
-            <td>+<%= m.balance %></td>
+            <td>+<%= m.category.value %></td>
           <% else %>
-            <td><%= m.balance %></td>
+            <td>-<%= m.category.value %></td>
           <% end %>
         </tr>
       <% end %>

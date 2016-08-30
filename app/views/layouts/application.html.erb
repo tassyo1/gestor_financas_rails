@@ -9,6 +9,15 @@
 <body>
 
   <%= render "layouts/menu" %>
+
+<div class="container">
+  <% flash.each do |key, value| %>
+    <div class="col-sm-offset-2 col-sm-10 alert alert-<%= key %>">
+      <%= value %>
+    </div>
+  <% end %>
+</div>
+
   <div class="container">
    <%= yield %>
   </div>
